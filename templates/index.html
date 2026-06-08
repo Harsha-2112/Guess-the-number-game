@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUMBER GUESSING GAME</title>
+    <link rel = "stylesheet" href="{{ url_for('static',filename = 'style.css')}}">
+</head>
+<body>
+    <h1> Welcome to number guessing game</h1>
+    <p> I have selected number between 1 to 100</p>
+    <p> You have 5 chances to guess the correct number</p>
+    <h3>Remaining chances : {{chances}}</h3>
+
+    <form method="POST">
+    <input type="number" name="guess" placeholder="Enter your guess" required 
+            {% if game_over %}disabled{% endif %}>
+    <button type="submit" {% if game_over %}disabled{% endif %}>Guess</button>
+    </form>
+
+    {% if game_over %}
+    <br><br>
+    <a href ="/restart"> 
+        <button > Play Again </button>
+    </a>
+    {% endif %}
+
+    <h2> {{message}}</h2>
+</body>
+</html>
